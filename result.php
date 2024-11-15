@@ -39,17 +39,19 @@ foreach ($_POST as $row) {
         $table_data .= '<td class="text-danger text-right"><strong>' . $question['marks'] . '</strong></td>';
     $table_data .= '</tr>';
     $total += $question['marks'];
+
 }
 
 $table_data .= "</tbody>";
-$table_data .= "<tfoot class='bg-warning'>";
-$table_data .= "<tr>";
-$table_data .= '<td colspan="4"> <strong>TOTAL QUESTIONS <strong>--></strong></strong></td>';
-$table_data .= '<td class="text-right"><strong><i>' . $total . '</i></strong></td>';
-$table_data .= "</tr>";
+// $table_data .= "<tfoot class='bg-warning'>";
+$table_data .= "<tfoot>";
 $table_data .= "<tr>";
 $table_data .= '<td colspan="4"> <strong>ATTENDED QUESTIONS <strong>--></strong></strong></td>';
 $table_data .= '<td class="text-right"><strong><i>' . $sl . '</i></strong></td>';
+$table_data .= "</tr>";
+$table_data .= "<tr>";
+$table_data .= '<td colspan="4"> <strong>CORRECT ANSWERS <strong>--></strong></strong></td>';
+$table_data .= '<td class="text-right"><strong><i>' . $total . '</i></strong></td>';
 $table_data .= "</tr>";
 $table_data .= "<tr>";
 $table_data .= '<td colspan="4"> <strong>PERCENTAGE <strong>--></strong></strong></td>';
@@ -73,6 +75,9 @@ $table_data .= "</table>";
     <style>
         body {
             background-color: rgba(7, 7, 7, 0.2);
+        }
+        tfoot{
+            background-color: rgba(199, 219, 35, 0.5);
         }
     </style>
 </head>
