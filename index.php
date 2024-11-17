@@ -49,13 +49,13 @@ $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <body class="d-flex justify-content-center align-items-center vh-100 vw-100">
     <div class=" container">
-        <h3><strong>SELECT SUBJECT TO SOLVE</strong></h3>
+        <h3><strong>Examine Yourself</strong></h3>
         <div class="choose">
             <form action="questions.php" method="post">
                 <div class="col-12">
                     <select required name="subject_id" class="w-100 form-select form-select-sm"
                         aria-label=".form-select-sm example">
-                        <option selected>CHOOSE SUBJECT</option>
+                        <option selected disabled >CHOOSE SUBJECT</option>
                         <?php
                         foreach ($subjects as $subject) {
                             echo '<option value=' . $subject['id'] . '>' . $subject['subject_name'] . '</option>';
@@ -64,7 +64,7 @@ $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </select>
                     <select required name="number_of_questions" class="form-select form-select-sm"
                         aria-label=".form-select-sm example">
-                        <option selected>HOW MUCH YOU WANT TO SOLVE</option>
+                        <option selected disabled>HOW MUCH YOU WANT TO SOLVE</option>
                         <?php
                         for ($i = 1; $i <= 50; $i++) {
                             echo '<option value=' . $i . '>' . $i . '</option>';
