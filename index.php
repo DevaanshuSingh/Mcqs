@@ -20,6 +20,9 @@ $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
             background-color: rgb(13 110 253 / 50%);
             
         }
+        select, option{/*Here this property isn't working on options*/
+            cursor: pointer;
+        }
         .container {
             display: flex;
             flex-direction: column;
@@ -55,7 +58,7 @@ $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="col-12">
                     <select required name="subject_id" class="w-100 form-select form-select-sm"
                         aria-label=".form-select-sm example">
-                        <option selected disabled >CHOOSE SUBJECT</option>
+                        <option selected disabled>CHOOSE SUBJECT</option>
                         <?php
                         foreach ($subjects as $subject) {
                             echo '<option value=' . $subject['id'] . '>' . $subject['subject_name'] . '</option>';
