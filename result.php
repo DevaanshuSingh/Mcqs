@@ -55,7 +55,7 @@ $table_data .= '<td class="text-right"><strong><i>' . $total . '</i></strong></t
 $table_data .= "</tr>";
 $table_data .= "<tr>";
 $table_data .= '<td colspan="4"> <strong>PERCENTAGE <strong>--></strong></strong></td>';
-$table_data .= '<td class="text-right"><strong><i>' . ($total/$sl)*100 . '</i></strong>%</td>';
+$table_data .= '<td class="text-right"><strong><i>' . ($total / $sl) * 100 . '</i></strong>%</td>';
 $table_data .= "</tr>";
 $table_data .= "</tfoot>";
 $table_data .= "</table>";
@@ -73,10 +73,15 @@ $table_data .= "</table>";
     <title>PHP MCQ Test Result</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+        *::selection {
+            color: blue;
+        }
+
         body {
             background-color: rgba(7, 7, 7, 0.2);
         }
-        tfoot{
+
+        tfoot {
             background-color: rgba(199, 219, 35, 0.5);
         }
     </style>

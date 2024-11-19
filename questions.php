@@ -19,6 +19,10 @@ if (isset($_POST['subject_id'], $_POST['number_of_questions'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
+      *::selection {
+        color: blue;
+      }
+
       body {
         background-image: url('codernaccotax.png');
         background-repeat: repeat-y;
@@ -44,17 +48,19 @@ if (isset($_POST['subject_id'], $_POST['number_of_questions'])) {
         /* background-color: black; */
         z-index: 1;
       }
-      .btn{
+
+      .btn {
         /*background-image: url(codernaccotax.png);
-        background-repeat: none;
-        background-size: initial;
-        background-position: center;
-        */
+          background-repeat: none;
+          background-size: initial;
+          background-position: center;
+          */
         transition: 1s ease;
 
         background-color: rgba(67, 103, 177, 1);
         border: 1px solid;
-        &:hover{
+
+        &:hover {
           color: white;
           border: 1px solid rgba(67, 103, 177, 1);
           background-color: rgba(67, 103, 177, .5);
@@ -87,8 +93,8 @@ if (isset($_POST['subject_id'], $_POST['number_of_questions'])) {
           for ($i = 1; $i <= 4; $i++) {
             $opt = "option" . $i;
             echo '<div class="form-check">';
-            echo '<input class="form-check-input border border-dark" type="radio" value="' . $question['id'] . '_' . $i . '" name="id_' . $question['id'] . '" id=for_option_'.$question['id'].'>';
-            echo '<label class="form-check-label" for=for_option_'.$question['id'].'>';
+            echo '<input class="form-check-input border border-dark" type="radio" value="' . $question['id'] . '_' . $i . '" name="id_' . $question['id'] . '" id=for_option_' . $question['id'] . '>';
+            echo '<label class="form-check-label" for=for_option_' . $question['id'] . '>';
             print ($question[$opt]);
             echo "</label>";
             echo "</div>";
@@ -96,7 +102,7 @@ if (isset($_POST['subject_id'], $_POST['number_of_questions'])) {
         }
         ?>
         <div class="col-6">
-          <button type="submit" class="btn">Submit Test</button>
+          <button type="submit" class="btn"><strong>Submit Test</strong></button>
         </div>
       </form>
 
@@ -118,6 +124,10 @@ if (isset($_POST['subject_id'], $_POST['number_of_questions'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
+      *::selection {
+        color: red;
+      }
+
       body {
         /* background-image: url('codernaccotax.png'); */
         background-repeat: repeat-y;
@@ -128,17 +138,19 @@ if (isset($_POST['subject_id'], $_POST['number_of_questions'])) {
         height: 100vh;
         width: 100vw;
         display: flex;
-        align-items: center; 
+        align-items: center;
         justify-content: center;
         border: 5px solid transparent;
         border-image: linear-gradient(to right, red, orange, red) 1;
         border-radius: 10%;
       }
-      a{
+
+      a {
         text-decoration: none;
         color: blue;
       }
-      .container{
+
+      .container {
         height: 100%;
         width: 100%;
         background-color: rgba(255, 255, 255, 1)
@@ -155,9 +167,9 @@ if (isset($_POST['subject_id'], $_POST['number_of_questions'])) {
     <?php
     // print_r($_POST);
     ?>
-      <!-- <div class="container">/ -->
-        <h3 class="heading ">Please Fullfill The Requirments First, <br>From <a href="index.php">HERE</a> </h3>
-      <!-- </div> -->
+    <!-- <div class="container">/ -->
+    <h3 class="heading ">Please Fullfill The Requirments First, <br>From <a href="index.php">HERE</a> </h3>
+    <!-- </div> -->
     <!-- <form action="result.php" method="post">
         <?php
         // $q_no = 0;
@@ -178,8 +190,8 @@ if (isset($_POST['subject_id'], $_POST['number_of_questions'])) {
           <button type="submit" class="btn btn-primary">Submit Test</button>
         </div>
       </form> -->
-    
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"></script>
   </body>
