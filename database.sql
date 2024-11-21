@@ -1,24 +1,37 @@
 -- create database mcq2_db;
 use mcq2_db;
-CREATE TABLE subjects (
-    id bigint AUTO_INCREMENT PRIMARY KEY,
-    subject_name VARCHAR(50) NOT NULL
-);
+CREATE TABLE `subjects` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `subject_name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 INSERT INTO subjects (subject_name) VALUES
 ("GK"),
 ("Computer"),
-("History");
-CREATE TABLE questions (
-    id bigint AUTO_INCREMENT PRIMARY KEY,
-    question TEXT NOT NULL,
-    subject_id bigint NOT NULL,
-    option1 VARCHAR(255) NOT NULL,
-    option2 VARCHAR(255) NOT NULL,
-    option3 VARCHAR(255) NOT NULL,
-    option4 VARCHAR(255) NOT NULL,
-    ans TINYINT NOT NULL, -- Stores the correct answer as a number (1-4)
-    FOREIGN KEY (subject_id) REFERENCES subjects(id)
-);
+("History"),
+("Maths"),
+("PHP");
+
+CREATE TABLE `topics` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `topic_name` varchar(255) DEFAULT NULL,
+  `subject_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `questions` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `question` text NOT NULL,
+  `topic_id` int(11) NOT NULL,
+  `option1` varchar(255) NOT NULL,
+  `option2` varchar(255) NOT NULL,
+  `option3` varchar(255) NOT NULL,
+  `option4` varchar(255) NOT NULL,
+  `ans` tinyint(4) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `subject_id` (`topic_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 INSERT INTO questions (question, subject_id, option1, option2, option3, option4, ans) VALUES
 ("What is the capital of France?", 1, "Paris", "London", "Rome", "Berlin", 1),
 ("Which planet is known as the Red Planet?", 1, "Earth", "Mars", "Jupiter", "Venus", 2),
