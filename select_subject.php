@@ -66,7 +66,7 @@ $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="col-12">
                     <select required name="subject_id" class="w-100 form-select form-select-sm"
                         aria-label=".form-select-sm example">
-                        <option selected disabled>CHOOSE Subject</option>
+                        <option selected disabled>Choose Subject</option>
                         <?php
                         foreach ($subjects as $subject) {
                             echo '<option value=' . $subject['id'] . '>' . $subject['subject_name'] . '</option>';

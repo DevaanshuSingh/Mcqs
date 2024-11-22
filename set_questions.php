@@ -2,7 +2,7 @@
 require_once 'config.php';
 // if (isset($_GET['topic_id'], $_GET['number_of_questions'])) {
 // $topic = $_GET['topic_id'];
-print_r($_GET);
+// print_r($_GET);
 
 ?>
 
@@ -21,31 +21,36 @@ print_r($_GET);
     }
 
     body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      height: 100vh;
+      width: 100vw;
       color: white;
       background-color: rgba(0, 0, 0, 0.5);
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid black;
     }
 
     a {
       text-decoration: none;
       color: black;
-
     }
-
 
     .heading {
       color: greenyellow !important;
     }
 
-    .form-check-input:checked {
-      background-color: #2b3a7b;
-      border: 1px solid whitesmoke !important;
-    }
-
     .container {
       height: 100%;
       width: 100%;
-      /* background-color: black; */
+      background-color: black;
       z-index: 1;
+      border: 1px solid;
+      box-sizing: border-box;
     }
 
     .btn {
@@ -95,49 +100,49 @@ print_r($_GET);
 
     <?php
 
-require_once 'config.php';
-// Check if form is submitted via GET
-print_r($_GET);
+    require_once 'config.php';
+    // Check if form is submitted via GET
+    print_r($_GET);
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-  // Check if the required form fields are set
-  if (isset($_GET['question'], $_GET['topic_id'], $_GET['option-1'], $_GET['option-2'], $_GET['option-3'], $_GET['option-4'], $_GET['ans'])) {
-      
-      // GET the form values
-      $question = $_GET['question'];
-      $topic_id = $_GET['topic_id'];
-      $option1 = $_GET['option-1'];
-      $option2 = $_GET['option-2'];
-      $option3 = $_GET['option-3'];
-      $option4 = $_GET['option-4'];
-      $ans = $_GET['ans'];
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+      // Check if the required form fields are set
+      if (isset($_GET['question'], $_GET['topic_id'], $_GET['option-1'], $_GET['option-2'], $_GET['option-3'], $_GET['option-4'], $_GET['ans'])) {
 
-      if (is_numeric($topic_id)) {
+        // GET the form values
+        $question = $_GET['question'];
+        $topic_id = $_GET['topic_id'];
+        $option1 = $_GET['option-1'];
+        $option2 = $_GET['option-2'];
+        $option3 = $_GET['option-3'];
+        $option4 = $_GET['option-4'];
+        $ans = $_GET['ans'];
+
+        if (is_numeric($topic_id)) {
           try {
             echo "Inside Try Block";
-              // Prepare the SQL statement
-              $stmt = $pdo->prepare('INSERT INTO questions (question, topic_id, option1, option2, option3, option4, ans) VALUES (?, ?, ?, ?, ?, ?, ?)');
-              
-              // Execute the query
-              if ($stmt->execute([$question, $topic_id, $option1, $option2, $option3, $option4, $ans])) {
-                  // If the query is successful
-                  echo "Ok";
-              } else {
-                  echo "Failed to insert the question.";
-              }
-          } catch (PDOException $e) {
-              // Handle SQL errors gracefully
-              echo "Error: " . $e->getMessage();
-          }
-      } else {
-          echo "Invalid topic ID.";
-      }
-  } else {
-      echo "Please fill in all the fields!";
-  }
-}
+            // Prepare the SQL statement
+            $stmt = $pdo->prepare('INSERT INTO questions (question, topic_id, option1, option2, option3, option4, ans) VALUES (?, ?, ?, ?, ?, ?, ?)');
 
-?>
+            // Execute the query
+            if ($stmt->execute([$question, $topic_id, $option1, $option2, $option3, $option4, $ans])) {
+              // If the query is successful
+              echo "Ok";
+            } else {
+              echo "Failed to insert the question.";
+            }
+          } catch (PDOException $e) {
+            // Handle SQL errors gracefully
+            echo "Error: " . $e->getMessage();
+          }
+        } else {
+          echo "Invalid topic ID.";
+        }
+      } else {
+        echo "Please fill in all the fields!";
+      }
+    }
+
+    ?>
 
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

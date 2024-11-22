@@ -4,7 +4,13 @@ try {
     $stmt = $pdo->prepare('SELECT * FROM topics WHERE subject_id = ?');
     $stmt->execute([$_GET['subject_id']]);
     $topics = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+    $stmt = $pdo->prepare('SELECT subject_name FROM subjects WHERE id = ?');
+    $stmt->execute([$_GET['subject_id']]);
+    $subject = $stmt->fetch(PDO::FETCH_COLUMN);
     // print_r($topics);
+    // echo $topics[0]['topic_name'];
 } catch (PDOException $e) {
     echo 'Error While Fetching Is: ' . $e->getMessage();
 }
@@ -68,9 +74,17 @@ try {
 
 <body class="d-flex justify-content-center align-items-center vh-100 vw-100">
     <div class=" container">
-        <h3><strong>Select_Topic</strong></h3>
+        <?php
+        if (empty($topics)) {
+            echo '<strong><i>Sorry, but no topics found for ' . strtoupper($subject) . ' </i></strong>If You Want To Set Topics Then Click <a href="set_topics.php"><strong>Here</strong></a>';
+        } else {
+            ?>
+            <h3><strong>Select Topic For <i><u><?php echo $subject; ?></u></i></strong></h3>
+            <?php
+        }
+        ?>
         <div class="choose">
-            <form action="add_questions.php" method="GET">
+            <form action="set_questions.php" method="GET">
                 <div class="col-12">
                     <select required name="topic_id" class="w-100 form-select form-select-sm"
                         aria-label=".form-select-sm example">
@@ -92,10 +106,6 @@ try {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-    <script>
-        document.body.style.cursor = 'url("solve2.png") 16 16, auto';
-
-    </script>
 </body>
 
 </html>
