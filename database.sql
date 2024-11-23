@@ -1,3 +1,4 @@
+-- reg{ date+month+year+hour+min+sec }
 -- create database mcq2_db;
 use mcq2_db;
 CREATE TABLE `subjects` (
@@ -19,6 +20,15 @@ CREATE TABLE `topics` (
   `subject_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+create table register(
+  id BIGINT Primary Key
+  ,name varchar(255)
+  ,regestration_no varchar(255)
+  ,section varchar(10)
+);
+
 
 CREATE TABLE `questions` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,

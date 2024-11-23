@@ -37,7 +37,7 @@ require_once 'config.php';
 
     a {
       text-decoration: none;
-      color: black;
+      color: #212529;
     }
 
     .heading {
@@ -47,7 +47,7 @@ require_once 'config.php';
     .container {
       height: 100%;
       width: 100%;
-      background-color: black;
+      background-color: rgba(255, 255, 255, 0.2);
       z-index: 1;
       border: 1px solid;
       box-sizing: border-box;
@@ -73,24 +73,24 @@ require_once 'config.php';
       <h3 class="heading"><u>Enter Question</h3>
 
       <label for="question">Insert Question</label>
-      <input type="text" name="question" id="question">
+      <input class="col-12" type="text" name="question" id="question">
 
       <label for="option-1">Insert Option-1</label>
-      <input type="text" name="option-1" id="option-1">
+      <input class="col-12" type="text" name="option-1" id="option-1">
 
       <label for="option-2">Insert Option-2</label>
-      <input type="text" name="option-2" id="option-2">
+      <input class="col-12" type="text" name="option-2" id="option-2">
 
       <label for="option-3">Insert Option-3</label>
-      <input type="text" name="option-3" id="option-3">
+      <input class="col-12" type="text" name="option-3" id="option-3">
 
       <label for="option-4">Insert Option-4</label>
-      <input type="text" name="option-4" id="option-4">
+      <input class="col-12" type="text" name="option-4" id="option-4">
 
       <label for="ans">Insert Correct Answer</label>
-      <input type="text" name="ans" id="ans">
+      <input class="col-12" type="text" name="ans" id="ans">
 
-      <input type="hidden" value="<?php
+      <input class="col-12" type="hidden" value="<?php
       echo $_GET['topic_id']
         ?>" name="topic_id">
 
