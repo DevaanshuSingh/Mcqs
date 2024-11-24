@@ -95,7 +95,7 @@ require_once 'config.php';
         ?>" name="topic_id">
 
       <button type="submit" class="btn"><strong>Insert Again</strong></button>
-      <button type="submit" class="btn"><strong><a href="complete.php">Complete Inserting</a></strong></button>
+      <button type="submit" onclick="setTimeout(() => { window.location.href='complete.php'; }, 200);" class="btn"><strong>Complete Inserting</strong></button>
     </form>
 
     <?php
