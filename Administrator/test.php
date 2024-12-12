@@ -1,5 +1,5 @@
 <?php
-require_once './Administrator/config.php';
+require_once 'config.php';
 
 ?>
 
@@ -56,6 +56,7 @@ require_once './Administrator/config.php';
       echo 'Database error: ' . $e->getMessage();
     }
     ?>:</h3>
+
     <form action="result.php" method="post">
       <?php
       $q_no = 0;

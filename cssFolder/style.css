@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgba(15, 30, 231, 0.384);
+    height: 100vh;
+    width: 100vw;
+}
+ nav {
+    height: 10vh;
+    width: 100vw;
+    background-color: rgba(0, 247, 255, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.insideNav {
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    gap: 1vmin;
+    width: 100%; /* Ensure it takes full width */
+    height: 100%;
+    background-color: rgba(255, 255, 0, 0.473);
+    /* overflow: hidden; */
+}
+.logo {
+    height: 100% !important;
+    background-color: rgba(26, 202, 26, 0.664);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30%;
+    width: 100%;
+    background-color: red;
+}
+.image-section{
+    height: 70%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.329);
+}
+
+.login {
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.heading{
+    background-color: rgba(135, 207, 235, 0.116);
+    width: 100%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+}
+
+.options{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sign-up{
+    border-left: 1px solid;
+    height: 100%;
+    background-color: rgba(0, 255, 255, 0.048);
+    display: flex;
+    flex-direction: column;
+    /* align-items: end; */
+    justify-content: end;
+}

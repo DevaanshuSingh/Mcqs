@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,18 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
 
-    <style>
+<!-- <style>
         * {
             margin: 0;
             padding: 0;
             z-index: 1;
         }
 
+        body {
+            height: 100vh;
+            width: 100vw;
+        }
+
         nav {
-            height: 10vh;
-            background-color: rgba(0, 0, 255, 0.5) !important;
+            height: 10% !important;
+            width: 100%;
+            background-color: red;
+
         }
 
         .container {
@@ -33,34 +40,38 @@
             gap: calc(100%/3);
         }
 
-
-        .picture {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        .picture{
             height: 100%;
-
+            width: fit-content;
+            background-color: yellow;
+            margin: 0 0 0 2%;
+            display: grid;
+            grid-template-rows: repeat(2, 1fr);
+            gap: auto;
         }
 
         .logo {
-            display: flex;
+             margin: 0 0 0 2% !important; 
+         display: flex;
             align-items: center;
-            justify-content: center;
-            height: auto;
-            width: 50%;
+            justify-content: center; 
+         height: auto; 
+         width: 50%; 
             background-color: rgba(255, 255, 255, 0.5);
             border-radius: 40%;
             overflow: hidden;
         }
+
+
+
 
         .startSection {
             display: flex;
             align-items: center;
             justify-content: space-evenly;
             display: grid;
-            grid-template-columns: repeat(3, 2fr);
-            gap: calc(100%/2);
+            grid-template-columns: repeat(4, 2fr);
+            gap: calc(100%/4);
 
         }
 
@@ -83,6 +94,10 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+        }
+
+        h1 strong {
+            cursor: pointer;
         }
 
         .open {
@@ -131,34 +146,33 @@
             left: 98%;
             color: red;
         }
-    </style>
-</head>
+    </style> -->
+<!-- </head>
 
 <body>
     <nav>
-        <div class="container">
-            <div class="picture grid-items ">
-                <div class="logo image-fluid">
-                    <img src="codernaccotax.png" alt="codernaccotax">
-                </div>
-                <strong><u>CNAT</u></strong>
+        <div class="picture ">
+            <strong><u>CNAT</u></strong>
+            <div class="logo image-fluid">
+                <img image-fluid src="codernaccotax.png" alt="codernaccotax">
+                 <img src="" alt="codernaccotax"> 
             </div>
-
-            <div class="startSection grid-items ">
-                <strong>Login As</strong>
-                <a class="btn btn-primary" href="./Administrator/select_subject.php">Teacher</a>
-                <a class="btn btn-primary" href="./Administrator/test.php">Student</a>
-            </div>
-
-            <div class="signup grid-items ">
-                <button class="btn btn-success" onclick="dialougeBox()">Sign Up</button>
-            </div>
-
         </div>
+
+        <div class="startSection ">
+             <strong>Login As</strong> -
+            <a class="btn btn-primary" href="./Administrator/select_subject.php">Teacher</a>
+            <a class="btn btn-primary" href="./Administrator/select_subject.php">Administrator</a>
+            <a class="btn btn-primary" href="./Administrator/select_subject.php">Student</a>
+        </div>
+
+         <div class="signup  ">
+                <button class="btn btn-success" onclick="dialougeBox()">Sign Up</button>
+            </div> 
     </nav>
     <div class="dialouge-box">
         <span>
-            <h1><strong>x</strong></h1>
+            <h1 onclick="closeDialougeBox()"><strong>x</strong></h1>
         </span>
         <div class="open">
             <nav><strong><u>SIGN UP</u></strong></nav>
@@ -180,48 +194,10 @@
 
     <?php
 
-    require_once './Administrator/config.php';
+    // require_once './Administrator/config.php';
     // Check if form is submitted via GET
-    print_r($_GET);
-
-    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        // Check if the required form fields are set
-        if (isset($_GET['question'], $_GET['topic_id'], $_GET['option-1'], $_GET['option-2'], $_GET['option-3'], $_GET['option-4'], $_GET['ans'])) {
-
-            // GET the form values
-            $question = $_GET['question'];
-            $topic_id = $_GET['topic_id'];
-            $option1 = $_GET['option-1'];
-            $option2 = $_GET['option-2'];
-            $option3 = $_GET['option-3'];
-            $option4 = $_GET['option-4'];
-            $ans = $_GET['ans'];
-
-            if (is_numeric($topic_id)) {
-                try {
-                    echo "Inside Try Block";
-                    // Prepare the SQL statement
-                    $stmt = $pdo->prepare('INSERT INTO questions (question, topic_id, option1, option2, option3, option4, ans) VALUES (?, ?, ?, ?, ?, ?, ?)');
-
-                    // Execute the query
-                    if ($stmt->execute([$question, $topic_id, $option1, $option2, $option3, $option4, $ans])) {
-                        // If the query is successful
-                        echo "Ok";
-                    } else {
-                        echo "Failed to insert the question.";
-                    }
-                } catch (PDOException $e) {
-                    // Handle SQL errors gracefully
-                    echo "Error: " . $e->getMessage();
-                }
-            } else {
-                echo "Invalid topic ID.";
-            }
-        } else {
-            echo "Please fill in all the fields!";
-        }
-    }
-
+    // print_r($_GET);
+    
     ?>
 
 
@@ -234,7 +210,60 @@
             console.log(`${dialougeBox}`);
             dialougeBox.style.display = "flex";
         }
+        function closeDialougeBox() {
+            let dialougeBox = document.querySelector('.dialouge-box');
+            console.log(`${dialougeBox}`);
+            dialougeBox.style.display = "none";
+        }
     </script>
+</body>
+
+</html> -->
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./cssFolder/style.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="insideNav">
+            <div class="logo">
+                <div class="name">
+                    <span>CNAT</span>
+                </div>
+                <div class="image-section">
+                    <img src="codernaccota.png" alt="CNAT">
+                </div>
+            </div>
+            <div class="login">
+                <div class="heading"><strong>
+                        <h5>Login As:</h5>
+                    </strong></div>
+                <div class="options">
+                    <button class="btn btn-success">Student</button>
+                    <button class="btn btn-success">Teacher</button>
+                    <button class="btn btn-success">Administrator</button>
+                </div>
+            </div>
+            <div class="sign-up">
+                <div class="btn btn-primary">SIGN UP</div>
+            </div>
+        </div>
+    </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
